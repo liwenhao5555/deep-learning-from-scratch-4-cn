@@ -29,3 +29,6 @@ plt.ylabel('Rates')
 plt.xlabel('Steps')
 plt.plot(avg_rates)
 plt.show()
+
+# added for remote figure
+plt.savefig("ch01/rates-avg.jpg")

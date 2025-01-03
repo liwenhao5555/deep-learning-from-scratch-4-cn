@@ -55,8 +55,17 @@ if __name__ == '__main__':
     plt.xlabel('Steps')
     plt.plot(total_rewards)
     plt.show()
+    
+    # added for remote figure
+    plt.savefig("ch01/total-reward.jpg") 
+    plt.clf()
+
+
 
     plt.ylabel('Rates')
     plt.xlabel('Steps')
     plt.plot(rates)
     plt.show()
+    
+    # added for remote figure
+    plt.savefig("ch01/rates.jpg") 
