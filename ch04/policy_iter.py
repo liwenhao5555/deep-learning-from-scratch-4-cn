@@ -57,3 +57,7 @@ if __name__ == '__main__':
     env = GridWorld()
     gamma = 0.9
     pi = policy_iter(env, gamma)
+
+    # added for remote figure
+    import matplotlib.pyplot as plt
+    plt.savefig("ch04/policy_iter.jpg")

@@ -51,3 +51,7 @@ if __name__ == '__main__':
 
     pi = greedy_policy(V, env, gamma)
     env.render_v(V, pi)
+
+    # added for remote figure
+    import matplotlib.pyplot as plt
+    plt.savefig("ch04/value_iter.jpg")
