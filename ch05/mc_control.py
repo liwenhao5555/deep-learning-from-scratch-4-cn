@@ -70,3 +70,7 @@ for episode in range(episodes):
         state = next_state
 
 env.render_q(agent.Q)
+
+# added for remote figure
+import matplotlib.pyplot as plt
+plt.savefig("ch05/mc_control.jpg")
