@@ -105,3 +105,7 @@ for state in env.states():
         q = agent.qnet(one_hot(state))[:, action]
         Q[state, action] = float(q.data)
 env.render_q(Q)
+
+# added for remote figure
+import matplotlib.pyplot as plt
+plt.savefig("ch07/q_learning_nn.jpg")
