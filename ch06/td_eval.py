@@ -43,3 +43,7 @@ for episode in range(episodes):
         state = next_state
 
 env.render_v(agent.V)
+
+# added for remote figure
+import matplotlib.pyplot as plt
+plt.savefig("ch06/td_eval.jpg")
