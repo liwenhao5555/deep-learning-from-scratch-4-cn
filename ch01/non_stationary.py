@@ -72,6 +72,3 @@ for key, avg_rates in results.items():
     plt.plot(avg_rates, label=key)
 plt.legend()
 plt.show()
-
-# added for remote figure
-plt.savefig("ch01/non-stationary-rates.jpg")
