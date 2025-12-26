@@ -58,6 +58,3 @@ for episode in range(episodes):
 
 env.render_v(agent.V)
 
-# added for remote figure
-import matplotlib.pyplot as plt
-plt.savefig("ch05/mc_eval.jpg")
