@@ -48,6 +48,3 @@ y_pred = model(t)
 plt.plot(t, y_pred.data, color='r')
 plt.show()
 
-# added for remote figure
-import matplotlib.pyplot as plt
-plt.savefig("ch07/dezero4.jpg")
