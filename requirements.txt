@@ -1,0 +1,12 @@
+# Core numerics
+numpy==1.23.5
+
+# RL environments (CartPole etc.)
+gymnasium[classic-control]==1.1.1
+pygame==2.6.1
+
+# Plotting
+matplotlib==3.9.4
+
+# Dezero (book code)
+dezero==0.0.13
