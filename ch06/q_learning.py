@@ -55,6 +55,3 @@ for episode in range(episodes):
 
 env.render_q(agent.Q)
 
-# added for remote figure
-import matplotlib.pyplot as plt
-plt.savefig("ch06/q_learning.jpg")
