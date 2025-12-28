@@ -2,7 +2,7 @@ if '__file__' in globals():
     import os, sys
     sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import numpy as np
-import gym
+import gymnasium as gym
 from dezero import Model
 from dezero import optimizers
 import dezero.functions as F
@@ -77,23 +77,24 @@ class Agent:
 
 
 episodes = 3000
-env = gym.make('CartPole-v0')
+env = gym.make('CartPole-v1')
 agent = Agent()
 reward_history = []
 
 for episode in range(episodes):
-    state = env.reset()
+    state, info = env.reset()
     done = False
-    total_reward = 0
+    total_reward = 0.0
 
     while not done:
         action, prob = agent.get_action(state)
-        next_state, reward, done, info = env.step(action)
+        next_state, reward, terminated, truncated, info = env.step(action)
+        done = terminated or truncated
 
         agent.update(state, prob, reward, next_state, done)
 
         state = next_state
-        total_reward += reward
+        total_reward += float(reward)
 
     reward_history.append(total_reward)
     if episode % 100 == 0:
