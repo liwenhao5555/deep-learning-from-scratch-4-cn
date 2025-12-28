@@ -3,7 +3,7 @@ from collections import deque
 import random
 import matplotlib.pyplot as plt
 import numpy as np
-import gym
+import gymnasium as gym
 from dezero import Model
 from dezero import optimizers
 import dezero.functions as F
@@ -95,22 +95,24 @@ class DQNAgent:
 
 episodes = 300
 sync_interval = 20
-env = gym.make('CartPole-v0')
+env = gym.make('CartPole-v1')
+env_play = gym.make('CartPole-v1', render_mode='human')
 agent = DQNAgent()
 reward_history = []
 
 for episode in range(episodes):
-    state = env.reset()
+    state, info = env.reset()
     done = False
     total_reward = 0
 
     while not done:
         action = agent.get_action(state)
-        next_state, reward, done, info = env.step(action)
+        next_state, reward, terminated, truncated, info = env.step(action)
+        done = terminated or truncated
 
         agent.update(state, action, reward, next_state, done)
         state = next_state
-        total_reward += reward
+        total_reward += float(reward)
 
     if episode % sync_interval == 0:
         agent.sync_qnet()
@@ -129,14 +131,19 @@ plt.show()
 
 # === Play CartPole ===
 agent.epsilon = 0  # greedy policy
-state = env.reset()
+done = False
+total_reward = 0
+state, info = env_play.reset()
 done = False
 total_reward = 0
 
 while not done:
     action = agent.get_action(state)
-    next_state, reward, done, info = env.step(action)
+    next_state, reward, terminated, truncated, info = env_play.step(action)
+    done = terminated or truncated
     state = next_state
-    total_reward += reward
-    env.render()
+    total_reward += float(reward)
+
 print('Total Reward:', total_reward)
+env.close()
+env_play.close()
